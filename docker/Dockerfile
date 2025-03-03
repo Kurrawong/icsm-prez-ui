@@ -27,8 +27,7 @@ RUN cd prez-ui && NUXT_PUBLIC_PREZ_API_ENDPOINT=$NUXT_PUBLIC_PREZ_API_ENDPOINT p
 #
 # Final
 #
-FROM nginx:alpine
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /app/prez-ui/dist /usr/share/nginx/html
+FROM caddy:2-alpine
+COPY --from=builder /app/prez-ui/dist /srv
+COPY ./Caddyfile /etc/caddy/Caddyfile
 EXPOSE 3000
-CMD ["nginx", "-g", "daemon off;"]
