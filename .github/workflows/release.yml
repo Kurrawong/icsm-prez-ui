@@ -6,7 +6,7 @@ on:
       - published
 
 env:
-  IMAGE_NAME: ghcr.io/kurrawong/fuseki
+  IMAGE_NAME: ghcr.io/kurrawong/icsm-prez-ui
 
 jobs:
   build:
