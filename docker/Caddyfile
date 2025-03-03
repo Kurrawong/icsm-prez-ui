@@ -1,0 +1,16 @@
+:3000 {
+    # Handle all routes without trailing slash issues
+    handle {
+        # Explicitly strip trailing slashes to prevent any normalization
+        uri strip_suffix /
+        
+        # Try the exact path, then fall back to index.html for SPA routing
+        try_files {path} /index.html
+        
+        # Enable the file server
+        file_server
+    }
+    
+    # Optional: Enable compression
+    encode gzip
+}
