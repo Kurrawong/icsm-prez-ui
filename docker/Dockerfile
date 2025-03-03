@@ -28,6 +28,11 @@ RUN cd prez-ui && NUXT_PUBLIC_PREZ_API_ENDPOINT=$NUXT_PUBLIC_PREZ_API_ENDPOINT p
 # Final
 #
 FROM caddy:2-alpine
+
+RUN apk add --no-cache \
+    # Used to perform health checks
+    curl
+
 COPY --from=builder /app/prez-ui/dist /srv
 COPY ./Caddyfile /etc/caddy/Caddyfile
 EXPOSE 3000
