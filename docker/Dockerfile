@@ -1,4 +1,4 @@
-ARG NUXT_PUBLIC_PREZ_API_ENDPOINT=https://icsm-prez.dev.itp.cam.kurrawong.ai
+ARG NUXT_PUBLIC_PREZ_API_ENDPOINT=https://prez-icsm.dev.itp.cam.kurrawong.ai
 ARG NODE_VERSION=20
 ARG PNPM_VERSION=9.0.5
 
