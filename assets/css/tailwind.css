@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* define your Tailwind CSS variables (in HSL values without the hsl()) here */
+        --primary: 16 100% 45%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 163 85% 29%;
+        --secondary-foreground: 0 0% 100%;
+        --link: 206 84% 38%;
+        --tertiary: 216 100% 13%;
+        --tertiary-foreground: 0 0% 100%;
+        --background: 0 0% 96%;
+
+        /* 211 100% 14%; headings */
+        /* 216 100% 13% footer top */
+        /* 218 100% 11% footer bottom */
+        /* 216 83% 14% nav hover */
+    }
+}

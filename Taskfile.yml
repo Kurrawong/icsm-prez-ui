@@ -7,7 +7,7 @@ tasks:
     cmd: task -a
 
   build:
-    cmd: docker build -f docker/Dockerfile -t icsm-prez-ui docker
+    cmd: docker build -f docker/Dockerfile -t icsm-prez-ui .
 
   run:
     cmd: docker run -p 3000:3000 icsm-prez-ui

@@ -1,0 +1,36 @@
+/* other CSS for your theme goes here */
+h1, h2, h3, h4, h5, h6 {
+    font-family: merriweather, Georgia, Times New Roman, DejaVu Serif, serif;
+    color: hsl(var(--tertiary));
+    font-weight: 600;
+}
+
+h1::after {
+    height: 1px;
+    width: 50px;
+    content: " ";
+    background-color: hsl(var(--primary));
+    display: block;
+    margin: .5em 0 0;
+}
+
+h1.text-center::after {
+    margin: 0 auto;
+    margin-top: .5em;
+}
+
+body {
+    font-family: proxima-nova, Arial, Helvetica, sans-serif;
+    background-color: hsl(var(--background));
+}
+
+nav[aria-label="breadcrumb"] a, nav[aria-label="breadcrumb"] span {
+    color: white !important;
+    font-weight: bold;
+}
+
+nav[aria-label="breadcrumb"] svg {
+    color: white !important;
+}
+
+/* max-width: 1300px; */

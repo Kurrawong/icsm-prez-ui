@@ -17,12 +17,9 @@ RUN corepack enable && \
     corepack install --global pnpm@${PNPM_VERSION}
 
 WORKDIR /app
-
-RUN pnpm dlx create-prez-app@latest prez-ui \
-    && sed -i 's/workspace:\*/^4.0.0/' prez-ui/package.json \
-    && pnpm install --prefix prez-ui
-
-RUN cd prez-ui && NUXT_PUBLIC_PREZ_API_ENDPOINT=$NUXT_PUBLIC_PREZ_API_ENDPOINT pnpm generate
+COPY . .
+RUN pnpm install --frozen-lockfile
+RUN NUXT_PUBLIC_PREZ_API_ENDPOINT=$NUXT_PUBLIC_PREZ_API_ENDPOINT pnpm generate
 
 #
 # Final
@@ -33,6 +30,6 @@ RUN apk add --no-cache \
     # Used to perform health checks
     curl
 
-COPY --from=builder /app/prez-ui/dist /srv
-COPY ./Caddyfile /etc/caddy/Caddyfile
+COPY --from=builder /app/dist /srv
+COPY ./docker/Caddyfile /etc/caddy/Caddyfile
 EXPOSE 3000
