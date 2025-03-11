@@ -10,4 +10,4 @@ tasks:
     cmd: docker build -f docker/Dockerfile -t icsm-prez-ui .
 
   run:
-    cmd: docker run -p 3000:3000 icsm-prez-ui
+    cmd: docker run --rm -p 3000:3000 icsm-prez-ui
