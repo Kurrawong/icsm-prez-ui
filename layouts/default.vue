@@ -6,6 +6,7 @@ const props = defineProps<{
     contentonly?: boolean;
 }>();
 const runtimeConfig = useRuntimeConfig();
+const globalConfig = useGlobalConfig();
 const expandSidePanel = ref(false);
 const showDebugPanel = ref(false);
 
