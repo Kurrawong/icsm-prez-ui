@@ -4,6 +4,7 @@ import { Cog } from "lucide-vue-next";
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 const appConfig = useAppConfig();
+const globalConfig = useGlobalConfig();
 
 const showDebugPanel = defineModel<boolean>();
 </script>
