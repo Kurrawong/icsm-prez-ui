@@ -52,8 +52,8 @@ importers:
         version: 4.5.0(vue@3.5.13(typescript@5.8.2))
     devDependencies:
       prez-ui:
-        specifier: ^4.0.1
-        version: 4.0.1(@vitest/ui@3.0.8)(eslint@9.22.0(jiti@2.4.2))(magicast@0.3.5)(tailwindcss@3.4.17)(typescript@5.8.2)(vitest@3.0.8)
+        specifier: ^4.0.2
+        version: 4.0.2(@vitest/ui@3.0.8)(eslint@9.22.0(jiti@2.4.2))(magicast@0.3.5)(tailwindcss@3.4.17)(typescript@5.8.2)(vitest@3.0.8)
       typescript:
         specifier: ^5.6.3
         version: 5.8.2
@@ -401,8 +401,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@eslint-community/eslint-utils@4.4.1':
-    resolution: {integrity: sha512-s3O3waFUrMV8P/XaF/+ZTp1X9XBZW1a4B97ZnjQF2KYWaFD2A8KyFBsrsfSjEmjn3RGWAIuvlneuZm3CUK3jbA==}
+  '@eslint-community/eslint-utils@4.5.1':
+    resolution: {integrity: sha512-soEIOALTfTK6EjmKMMoLugwaP0rzkad90iIWd1hMO9ARkSAyjfMfkRRhLvD5qH7vvM0Cg72pieUfR6yh6XxC4w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
@@ -3839,16 +3839,16 @@ packages:
     resolution: {integrity: sha512-4yf0QO/sllf/1zbZWYnvWw3NxCQwLXKzIj0G849LSufP15BXKM0rbD2Z3wVnkMfjdn/CB0Dpp444gYAACdsplg==}
     engines: {node: '>=18'}
 
-  prez-components@4.0.1:
-    resolution: {integrity: sha512-Dc18XOCGxo5FRZXWusfKwNqAcCbejlbIBdtvcW5rcxs5SyXXmqy91lZeTyAkjwd3j9taLJDxdbjE49S1vgL+7w==}
+  prez-components@4.0.2:
+    resolution: {integrity: sha512-n45ARID9mPaHcu6bEDmgKqg61XalGwFtXIVSDoOYgoSrvV0kw0wT1fA82EraFYQeQozH2bsWaOD6DEsLgROuRA==}
     peerDependencies:
       vue: ^3.0.0
 
-  prez-lib@4.0.1:
-    resolution: {integrity: sha512-QKni0TCN9x9t5fTwXXx7cWjxpVFFNl3mPvbO/xV1U9FaajrEKPkyHrvjLAgXY6k/d+YeHz/ygRXKRKtOqhsrrg==}
+  prez-lib@4.0.2:
+    resolution: {integrity: sha512-UyMxzzwUt3AnvTCQ5zMDUwQoJRL5kC9c3BVZjT0gzNALiXmtl1s/wr767y7wVt0Ar2dZIJgg1mbdhDlia71wOg==}
 
-  prez-ui@4.0.1:
-    resolution: {integrity: sha512-cNfL8yyr85TtbR+sTndHlq3DBLCAQyzNMW1Cue/9/W29ZKt4bbk2M6dWvb8Euejyt3knyqzKEqU8ffLhV/BZdQ==}
+  prez-ui@4.0.2:
+    resolution: {integrity: sha512-EgdittulalJtjrp9ZYX+4Nz1mY8NFz+SKZgU1MQKzz/6XuF2B7BgYSKsY/tlplJKWFKoynJMB55tAfxDqXHpzQ==}
 
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
@@ -5256,7 +5256,7 @@ snapshots:
   '@esbuild/win32-x64@0.25.1':
     optional: true
 
-  '@eslint-community/eslint-utils@4.4.1(eslint@9.22.0(jiti@2.4.2))':
+  '@eslint-community/eslint-utils@4.5.1(eslint@9.22.0(jiti@2.4.2))':
     dependencies:
       eslint: 9.22.0(jiti@2.4.2)
       eslint-visitor-keys: 3.4.3
@@ -7442,7 +7442,7 @@ snapshots:
 
   eslint@9.22.0(jiti@2.4.2):
     dependencies:
-      '@eslint-community/eslint-utils': 4.4.1(eslint@9.22.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.5.1(eslint@9.22.0(jiti@2.4.2))
       '@eslint-community/regexpp': 4.12.1
       '@eslint/config-array': 0.19.2
       '@eslint/config-helpers': 0.1.0
@@ -9197,7 +9197,7 @@ snapshots:
     dependencies:
       parse-ms: 4.0.0
 
-  prez-components@4.0.1(tailwindcss@3.4.17)(vue@3.5.13(typescript@5.8.2)):
+  prez-components@4.0.2(tailwindcss@3.4.17)(vue@3.5.13(typescript@5.8.2)):
     dependencies:
       class-variance-authority: 0.7.1
       clsx: 2.1.1
@@ -9205,7 +9205,7 @@ snapshots:
       lucide-vue-next: 0.461.0(vue@3.5.13(typescript@5.8.2))
       marked: 15.0.7
       mermaid: 11.4.1
-      prez-lib: 4.0.1
+      prez-lib: 4.0.2
       radix-vue: 1.9.17(vue@3.5.13(typescript@5.8.2))
       tailwind-merge: 2.6.0
       tailwindcss-animate: 1.0.7(tailwindcss@3.4.17)
@@ -9216,11 +9216,11 @@ snapshots:
       - supports-color
       - tailwindcss
 
-  prez-lib@4.0.1:
+  prez-lib@4.0.2:
     dependencies:
       n3: 1.24.0
 
-  prez-ui@4.0.1(@vitest/ui@3.0.8)(eslint@9.22.0(jiti@2.4.2))(magicast@0.3.5)(tailwindcss@3.4.17)(typescript@5.8.2)(vitest@3.0.8):
+  prez-ui@4.0.2(@vitest/ui@3.0.8)(eslint@9.22.0(jiti@2.4.2))(magicast@0.3.5)(tailwindcss@3.4.17)(typescript@5.8.2)(vitest@3.0.8):
     dependencies:
       '@nuxtjs/color-mode': 3.5.2(magicast@0.3.5)
       '@nuxtjs/tailwindcss': 6.13.1(magicast@0.3.5)
@@ -9233,8 +9233,8 @@ snapshots:
       lucide-vue-next: 0.461.0(vue@3.5.13(typescript@5.8.2))
       marked: 15.0.7
       mermaid: 11.4.1
-      prez-components: 4.0.1(tailwindcss@3.4.17)(vue@3.5.13(typescript@5.8.2))
-      prez-lib: 4.0.1
+      prez-components: 4.0.2(tailwindcss@3.4.17)(vue@3.5.13(typescript@5.8.2))
+      prez-lib: 4.0.2
       radix-vue: 1.9.17(vue@3.5.13(typescript@5.8.2))
       shadcn-nuxt: 0.11.3(magicast@0.3.5)
       shadcn-vue: 0.11.4(@vitest/ui@3.0.8)(eslint@9.22.0(jiti@2.4.2))(magicast@0.3.5)(vitest@3.0.8)(vue@3.5.13(typescript@5.8.2))
