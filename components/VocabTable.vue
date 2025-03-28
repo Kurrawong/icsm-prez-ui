@@ -60,17 +60,17 @@ async function listVocabs() {
     SELECT ?cs ?labelStr ?desc (GROUP_CONCAT(DISTINCT ?_keywords; SEPARATOR=",") AS ?keywords) ?status
     WHERE {
         ?cs a skos:ConceptScheme ;
-        skos:prefLabel ?label .
+            skos:prefLabel ?label .
         FILTER (LANG(?label) = "en" || !LANG(?label))
         BIND (STR(?label) AS ?labelStr)
         OPTIONAL {
             ?cs skos:definition ?desc .
         }
         OPTIONAL {
-            ?cs sdo:keywords ?_keywords .
+            ?cs sdo:keywords/skos:prefLabel ?_keywords .
         }
         OPTIONAL {
-            ?cs sdo:status ?status .
+            ?cs sdo:status/skos:prefLabel ?status .
         }
     } GROUP BY ?cs ?labelStr ?desc ?status ORDER BY ?labelStr`;
 
