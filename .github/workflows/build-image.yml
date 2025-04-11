@@ -37,9 +37,9 @@ jobs:
         with:
           images: ${{ env.IMAGE_NAME }}
           tags: |
-            type=semver,pattern={{version}}-${{ inputs.environment }}
-            type=semver,pattern={{major}}.{{minor}}-${{ inputs.environment }}
-            type=semver,pattern={{major}}-${{ inputs.environment }}
+            type=semver,pattern={{version}}${{ inputs.environment != 'prod' && format('-{0}', inputs.environment) || '' }}
+            type=semver,pattern={{major}}.{{minor}}${{ inputs.environment != 'prod' && format('-{0}', inputs.environment) || '' }}
+            type=semver,pattern={{major}}${{ inputs.environment != 'prod' && format('-{0}', inputs.environment) || '' }}
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
