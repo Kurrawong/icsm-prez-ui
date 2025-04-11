@@ -11,9 +11,6 @@ on:
         required: true
         type: string
         description: "The Prez API endpoint for the environment"
-    secrets:
-      GITHUB_TOKEN:
-        required: true
 
 env:
   IMAGE_NAME: ghcr.io/kurrawong/icsm-prez-ui

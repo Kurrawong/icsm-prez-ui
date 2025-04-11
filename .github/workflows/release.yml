@@ -11,21 +11,15 @@ jobs:
     with:
       environment: dev
       prez_api_endpoint: https://icsm-api.dev.qlocation.information.qld.gov.au
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-uat:
     uses: ./.github/workflows/build-image.yml
     with:
       environment: uat
       prez_api_endpoint: https://icsm-api.uat.qlocation.information.qld.gov.au
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-prod:
     uses: ./.github/workflows/build-image.yml
     with:
       environment: prod
       prez_api_endpoint: https://icsm-api.qlocation.information.qld.gov.au
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
