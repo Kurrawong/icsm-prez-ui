@@ -1,0 +1,72 @@
+name: Build Image
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+        description: "The environment to build for (dev, uat, prod)"
+      prez_api_endpoint:
+        required: true
+        type: string
+        description: "The Prez API endpoint for the environment"
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+
+env:
+  IMAGE_NAME: ghcr.io/kurrawong/icsm-prez-ui
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - name: Get release version
+        id: version
+        run: echo "VALUE=$(npx --yes semver ${{ github.event.release.tag_name }})" >> "$GITHUB_OUTPUT"
+
+      - name: Docker metadata
+        id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=semver,pattern={{version}}-${{ inputs.environment }}
+            type=semver,pattern={{major}}.{{minor}}-${{ inputs.environment }}
+            type=semver,pattern={{major}}-${{ inputs.environment }}
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up and use Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build container image and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./docker/Dockerfile
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          build-args: |
+            NUXT_PUBLIC_PREZ_API_ENDPOINT=${{ inputs.prez_api_endpoint }}
+          # Set provenance to false due to issue documented here: https://github.com/docker/build-push-action/issues/778
+          provenance: false
+          platforms: linux/amd64,linux/arm64

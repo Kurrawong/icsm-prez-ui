@@ -1,6 +1,3 @@
-# TODO: Turn this into a reusable workflow to build an image for each environment: dev, uat, prod
-#       For now, it only builds it for the dev environment.
-
 name: Release
 
 on:
@@ -8,59 +5,27 @@ on:
     types:
       - published
 
-env:
-  IMAGE_NAME: ghcr.io/kurrawong/icsm-prez-ui
-  PREZ_API_ENDPOINT: https://icsm-api.dev.qlocation.information.qld.gov.au
-
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-dev:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      environment: dev
+      prez_api_endpoint: https://icsm-api.dev.qlocation.information.qld.gov.au
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    steps:
-      - uses: actions/checkout@v4
+  build-uat:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      environment: uat
+      prez_api_endpoint: https://icsm-api.uat.qlocation.information.qld.gov.au
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
-
-      - name: Get release version
-        id: version
-        run: echo "VALUE=$(npx --yes semver ${{ github.event.release.tag_name }})" >> "$GITHUB_OUTPUT"
-
-      - name: Docker metadata
-        id: metadata
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.IMAGE_NAME }}
-          tags: |
-            type=semver,pattern={{version}}-dev
-            type=semver,pattern={{major}}.{{minor}}-dev
-            type=semver,pattern={{major}}-dev
-
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
-      - name: Set up and use Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build container image and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./docker/Dockerfile
-          push: true
-          tags: ${{ steps.metadata.outputs.tags }}
-          labels: ${{ steps.metadata.outputs.labels }}
-          build-args: |
-            NUXT_PUBLIC_PREZ_API_ENDPOINT=${{ env.PREZ_API_ENDPOINT }}
-          # Set provenance to false due to issue documented here: https://github.com/docker/build-push-action/issues/778
-          provenance: false
-          platforms: linux/amd64,linux/arm64
+  build-prod:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      environment: prod
+      prez_api_endpoint: https://icsm-api.qlocation.information.qld.gov.au
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
