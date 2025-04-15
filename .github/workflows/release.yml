@@ -16,7 +16,7 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     with:
       environment: uat
-      prez_api_endpoint: https://icsm-api.uat.qlocation.information.qld.gov.au
+      prez_api_endpoint: https://icsm-api.test.qlocation.information.qld.gov.au
 
   build-prod:
     uses: ./.github/workflows/build-image.yml
