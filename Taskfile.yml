@@ -2,9 +2,15 @@
 
 version: "3"
 
+vars:
+  api_endpoint: http://localhost:8000
+
 tasks:
   default:
     cmd: task -a
+
+  build:local:
+    cmd: docker build -f docker/Dockerfile -t icsm-prez-ui --build-arg NUXT_PUBLIC_PREZ_API_ENDPOINT={{.api_endpoint}} .
 
   build:
     cmd: docker build -f docker/Dockerfile -t icsm-prez-ui .
