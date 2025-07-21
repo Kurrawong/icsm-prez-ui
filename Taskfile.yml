@@ -9,8 +9,11 @@ tasks:
   default:
     cmd: task -a
 
-  build:
+  build:local:
     cmd: docker build -f docker/Dockerfile -t icsm-prez-ui --build-arg NUXT_PUBLIC_PREZ_API_ENDPOINT={{.api_endpoint}} .
+
+  build:
+    cmd: docker build -f docker/Dockerfile -t icsm-prez-ui .
 
   run:
     cmd: docker run --rm -p 3000:3000 icsm-prez-ui
